@@ -1,0 +1,25 @@
+
+
+ Pin # | Name     | Pin Type
+-----------------------------
+   1   | NC       | Input
+   2   | RED      | Input
+   3   | GRN      | Input
+   4   | BLU      | Input
+   5   | RI       | Input
+   6   | GIINT    | Input
+   7   | BI       | Input
+   8   | HSYNC    | Input
+   9   | VSYNC    | Input
+  10   | GND      | GND
+  11   | EGA      | Input
+  12   | CSYNC    | Output
+  13   | /NEGCSYNC| Output
+  14   | B0       | Output
+  15   | B1       | Output
+  16   | G0       | Output
+  17   | G1       | Output
+  18   | R0       | Output
+  19   | R1       | Output
+  20   | VCC      | VCC
+

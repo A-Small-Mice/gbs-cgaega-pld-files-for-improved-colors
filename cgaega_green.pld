@@ -1,0 +1,37 @@
+GAL16V8
+cgaega
+
+NC RED GRN BLU RI GIINT BI HSYNC VSYNC GND
+EGA CSYNC /NEGCSYNC B0 B1 G0 G1 R0 R1 VCC
+
+; RED/GRN/BLU are the high order bits, RI/GI/BI are the low order or
+; separate intensity bits. GI is also the signle intensity in CGA mode
+
+
+
+
+
+; CGA MODE MDA SIGNAL DETECTION: /EGA * (RED, GRN, BLU) * BI
+; CGA MODE BROWN      DETECTION: RED * GRN * /BLU * /GIINT
+; CGA MODE DARK GRAY  DETECTION: /EGA * /RED * /GRN * /BLU * GIINT
+
+
+; CGA MODE LIGHTER COLOR: add '/EGA * GIINT' to R0, G0, and B0
+; DARK GRAY DETECTION can be replaced with LIGHTER COLOR
+
+
+R0 = EGA * RI + /EGA * RED * GIINT + /EGA * GIINT
+R1 = RED
+
+G0 = EGA * GIINT + /EGA * GRN * GIINT + /EGA * GIINT + /EGA * RED * GRN * /BLU * /GIINT
+G1 = EGA * GRN + /EGA * GRN * /RED * BI + /EGA * GRN * BLU * BI + /EGA * GRN * GIINT * BI
+
+B0 = EGA * BI + /EGA * BLU * GIINT + /EGA * GIINT
+B1 = BLU
+
+CSYNC = HSYNC * VSYNC + /HSYNC * /VSYNC
+NEGCSYNC = HSYNC * VSYNC + /HSYNC * /VSYNC
+
+
+DESCRIPTION
+CGA to EGA conversion with brown detection and composite sync combining
